@@ -1,8 +1,9 @@
 #include "RedBlack.h"
 #include <iostream>
 #include <stdexcept>
+using namespace std;
 
-// Constructor: Initializes the Red-Black Tree
+// Constructor
 RedBlackTree::RedBlackTree() {
     nil = new Node();
     nil->color = BLACK;
@@ -11,7 +12,7 @@ RedBlackTree::RedBlackTree() {
     root = nil;
 }
 
-// Destructor: Clears the tree and deletes the nil node
+// Destructor
 RedBlackTree::~RedBlackTree() {
     clear();
     delete nil;
@@ -126,7 +127,7 @@ void RedBlackTree::insertFixup(Node* z) {
     root->color = BLACK;
 }
 
-// Transplant
+// Transplant, replaces one subtree as a child of its parent with another subtree
 void RedBlackTree::transplant(Node* u, Node* v) {
     if (u->parent == nil) {
         root = v;
@@ -138,11 +139,11 @@ void RedBlackTree::transplant(Node* u, Node* v) {
     v->parent = u->parent;
 }
 
-// Delete a key
+// Delete key
 void RedBlackTree::remove(int key) {
     Node* z = search(root, key);
     if (z == nil) {
-        std::cerr << "Key not found.\n";
+        cerr << "Key not found.\n";
         return;
     }
 
@@ -180,7 +181,7 @@ void RedBlackTree::remove(int key) {
     }
 }
 
-// Deletion
+// Fix violations after deletion
 void RedBlackTree::deleteFixup(Node* x) {
     while (x != root && x->color == BLACK) {
         if (x == x->parent->left) {
@@ -251,7 +252,7 @@ RedBlackTree::Node* RedBlackTree::search(Node* node, int key) const {
     return search(node->right, key);
 }
 
-// Find the minimum node
+// Find minimum node
 RedBlackTree::Node* RedBlackTree::minimum(Node* node) const {
     while (node->left != nil) {
         node = node->left;
@@ -259,7 +260,7 @@ RedBlackTree::Node* RedBlackTree::minimum(Node* node) const {
     return node;
 }
 
-// Clear the tree
+// Clear
 void RedBlackTree::clear(Node* node) {
     if (node == nil) return;
     clear(node->left);
@@ -272,16 +273,16 @@ void RedBlackTree::clear() {
     root = nil;
 }
 
-// Display the tree (in-order traversal)
+// Display tree
 void RedBlackTree::display() const {
     inOrderTraversal(root);
-    std::cout << std::endl;
+    cout << endl;
 }
 
 void RedBlackTree::inOrderTraversal(Node* node) const {
     if (node == nil) return;
     inOrderTraversal(node->left);
-    std::cout << node->key << " ";
+    cout << node->key << " ";
     inOrderTraversal(node->right);
 }
 
@@ -290,7 +291,7 @@ RedBlackTree::Node* RedBlackTree::getRoot() const {
     return root;
 }
 
-// Get sentinel nil node
+// Get nil node
 RedBlackTree::Node* RedBlackTree::getNil() const {
     return nil;
 }
