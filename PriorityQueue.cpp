@@ -7,7 +7,7 @@ void PriorityQueue::enqueue(int value) {
 
 void PriorityQueue::dequeue() {
     if (!pq.empty()) {
-        pq.pop(); 
+        pq.pop();
     } else {
         cout << "Priority queue is empty, nothing to dequeue!\n";
     }
@@ -15,14 +15,14 @@ void PriorityQueue::dequeue() {
 
 int PriorityQueue::peek() const {
     if (!pq.empty()) {
-        return pq.top(); 
+        return pq.top();
     } else {
         throw runtime_error("Priority queue is empty, no top element!");
     }
 }
 
 bool PriorityQueue::isEmpty() const {
-    return pq.empty(); 
+    return pq.empty();
 }
 
 void PriorityQueue::display() const {
@@ -31,20 +31,18 @@ void PriorityQueue::display() const {
         return;
     }
 
-    // Create a copy of the priority queue to display elements non-destructively
-    std::priority_queue<int> temp = pq;
+    priority_queue<int> temp = pq;
     while (!temp.empty()) {
-        cout << temp.top() << " ";
+        std::cout << temp.top() << " ";
         temp.pop();
     }
-    std::cout << "\n";
+    cout << "\n";
 }
 
-std::vector<int> PriorityQueue::getData() const {
+vector<int> PriorityQueue::getData() const {
     vector<int> result;
-    priority_queue<int> temp = pq; // Copy the priority queue
+    priority_queue<int> temp = pq;
 
-    // Extract elements into a vector
     while (!temp.empty()) {
         result.push_back(temp.top());
         temp.pop();
@@ -52,4 +50,3 @@ std::vector<int> PriorityQueue::getData() const {
 
     return result;
 }
-
