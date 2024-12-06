@@ -1,4 +1,5 @@
 #include "AVL.h"
+using namespace std;
 
 // Constructor
 AVL::AVL() : root(nullptr) {}
@@ -8,7 +9,7 @@ AVL::~AVL() {
     clear(root);
 }
 
-// Clear the tree
+// Clear tree
 void AVL::clear(Node* node) {
     if (node) {
         clear(node->left);
@@ -55,7 +56,7 @@ AVL::Node* AVL::rotateLeft(Node* x) {
     return y;
 }
 
-// Insert key into AVL tree
+// Insert key into  AVL tree
 AVL::Node* AVL::insert(Node* node, int key) {
     if (!node) {
         return new Node(key);
@@ -97,7 +98,7 @@ AVL::Node* AVL::insert(Node* node, int key) {
     return node;
 }
 
-// Remove key from AVL tree
+// Remove  key from AVL tree
 AVL::Node* AVL::remove(Node* node, int key) {
     if (!node) {
         return node;
@@ -165,17 +166,17 @@ AVL::Node* AVL::minValueNode(Node* node) {
     return current;
 }
 
-// Insert key 
+// Insert a key
 void AVL::insert(int key) {
     root = insert(root, key);
 }
 
-// Remove key 
+// Remove a key
 void AVL::remove(int key) {
     root = remove(root, key);
 }
 
-// Search for a key in the tree
+// Search for key
 bool AVL::search(int key) const {
     Node* current = root;
     while (current) {
@@ -187,22 +188,22 @@ bool AVL::search(int key) const {
     return false;
 }
 
-// In-order traversal for display
+// In-order traversal
 void AVL::inOrder(Node* node) const {
     if (node) {
         inOrder(node->left);
-        std::cout << node->key << " ";
+        cout << node->key << " ";
         inOrder(node->right);
     }
 }
 
-// Display the AVL tree
+// Display tree
 void AVL::display() const {
     if (!root) {
-        std::cout << "Tree is empty!\n";
+        cout << "Tree is empty!\n";
     } else {
         inOrder(root);
-        std::cout << "\n";
+        cout << "\n";
     }
 }
 
