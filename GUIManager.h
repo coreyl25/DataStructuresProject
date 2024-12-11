@@ -34,6 +34,7 @@ public:
 
     bool isOpen() const;
     void clear();
+    void display();
 
     // Rendering functions
     void renderStack(const Stack& stack);
