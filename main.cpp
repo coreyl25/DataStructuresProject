@@ -105,7 +105,7 @@ int main() {
                             cout << (heap.search(value) ? "Found\n" : "Not Found\n");
                             break;
                         case 4:
-                            gui.clear();
+                            gui.renderHeap(heap);
                             break;
                     }
                 }
@@ -135,7 +135,7 @@ int main() {
                             }
                             break;
                         case 4:
-                            gui.clear();
+                            gui.renderPriorityQueue(priorityQueue);
                             break;
                     }
                 }
@@ -165,7 +165,7 @@ int main() {
                             cout << (rbTree.search(value) ? "Found\n" : "Not Found\n");
                             break;
                         case 4:
-                            gui.clear();
+                            gui.renderRedBlackTree(rbTree);
                             break;
                     }
                 }
@@ -195,11 +195,12 @@ int main() {
                             cout << (bTree.search(value) ? "Found\n" : "Not Found\n");
                             break;
                         case 4:
-                            gui.clear();
+                            gui.renderBTree(bTree);
                             break;
                     }
                 }
                 break;
+                
 
             case 7: // AVL Tree
                 while (true) {
@@ -213,11 +214,13 @@ int main() {
                             cout << "Enter value to insert: ";
                             cin >> value;
                             avlTree.insert(value);
+                            gui.renderAVLTree(avlTree);
                             break;
                         case 2:
                             cout << "Enter value to delete: ";
                             cin >> value;
                             avlTree.remove(value);
+                            gui.renderAVLTree(avlTree);
                             break;
                         case 3:
                             cout << "Enter value to search: ";
@@ -225,8 +228,12 @@ int main() {
                             cout << (avlTree.search(value) ? "Found\n" : "Not Found\n");
                             break;
                         case 4:
-                            gui.clear();
+                            gui.renderAVLTree(avlTree);
                             break;
+                        case 5:
+                            break;
+                        default:
+                            cout << "Invalid choice\n";
                     }
                 }
                 break;
